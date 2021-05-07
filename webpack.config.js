@@ -2,6 +2,7 @@
 
 const path = require('path')
 const TerserPlugin = require('terser-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
     mode: 'none',
@@ -19,7 +20,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /.js$/,
+                test: /\.js$/,
                 use: 'babel-loader'
             }
         ]
@@ -31,5 +32,8 @@ module.exports = {
                 include: /\.min\.js$/,
             })
         ]
-    }
+    },
+    plugins: [
+        new CleanWebpackPlugin()
+    ]
 }
